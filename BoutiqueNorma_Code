@@ -1,0 +1,239 @@
+struct Articulo {
+  var nombre: String
+  var precio: Int
+  var cantidad: Int
+}
+
+var articulos: [Articulo] = [
+  Articulo(nombre: "Bluza", precio: 250, cantidad: 125),
+  Articulo(nombre: "Falda", precio: 399, cantidad: 150),
+  Articulo(nombre: "Bolza", precio: 350, cantidad: 90),
+  Articulo(nombre: "Camiza", precio: 219, cantidad: 110),
+  Articulo(nombre: "Pantalon", precio: 450, cantidad: 135),
+  Articulo(nombre: "Cartera", precio: 250, cantidad: 100)
+]
+
+var aux: String = ""
+var opcionIngresada: String = aux
+var cuenta: Int = 0
+
+while opcionIngresada != "2" {  
+  print("----------------------------------")
+  print("--------♥ !!Bienvenido¡¡ ♥--------")   
+  print("---♥♥♥--- Boutique Norma ---♥♥♥---")
+  print("----------------------------------")
+  print("\n")
+  print("Opcion 1: Comprar Articulo")
+  print("Opcion 2: Salir")
+  print("\n")
+  print("----------------------------------")
+  print("Ingrese la opcion: ", terminator: "")    
+  
+  aux = readLine()!
+  opcionIngresada = aux 
+
+  if opcionIngresada == "1"{
+    print("\n")
+    print("----------------------------------")
+    print("----♥ Articulos Disponibles ♥-----")
+    print("----------------------------------")  
+    print("\n")
+    
+    print("Opcion 1: ")
+    print("     Articulo: 1 \(articulos[0].nombre)")     
+    print("----------------------------------")
+
+    print("Opcion 2: ")
+    print("     Articulo: 2 \(articulos[1].nombre)")     
+    print("----------------------------------")
+
+    print("Opcion 3: ")
+    print("     Articulo: 3 \(articulos[2].nombre)")
+    print("----------------------------------")
+
+    print("Opcion 4: ")
+    print("     Articulo: 4 \(articulos[3].nombre)")
+    print("----------------------------------")
+
+    print("Opcion 5: ")
+    print("     Articulo: 5 \(articulos[4].nombre)")
+    print("----------------------------------")
+
+    print("Opcion 6: ")
+    print("     Articulo: 6 \(articulos[5].nombre)")
+    print("----------------------------------")
+    
+    print("\n")    
+    print("Ingrese la opcion deseada: ", terminator: "")
+
+    aux = readLine()!
+    opcionIngresada = aux 
+
+    switch opcionIngresada {
+    case "1":
+      print("\n")
+      print("----------------------------------")
+      print("Seleccionaste: \(articulos[0].nombre)")
+      print("       Precio: \(articulos[0].precio)")
+      print("        Stock: \(articulos[0].cantidad)")
+      print("----------------------------------")
+      print("\n")
+      print("Cuanto desea comprar: ", terminator:  "")
+      
+      aux = readLine()!
+      opcionIngresada = aux
+      
+      let cantidad = Int(opcionIngresada)!      
+      if cantidad <= articulos[0].cantidad {
+        cuenta = cantidad * articulos[0].precio
+        print("\n")        
+        print("        USTED COMPRO: \(cantidad) \(articulos[0].nombre)")
+        print("               TOTAL: $ \(cuenta)")
+        print("\n")
+        print("----♥ Gracias por su Compra ♥-----")  
+        print("\n")
+      } else {
+        print("No hay Cantidad suficiente")
+      }
+      
+    case "2":
+      print("\n")
+      print("----------------------------------")
+      print("Seleccionaste: \(articulos[1].nombre)")
+      print("       Precio: \(articulos[1].precio)")
+      print("        Stock: \(articulos[1].cantidad)")
+      print("----------------------------------")
+      print("\n")
+      print("Cuanto desea comprar: ", terminator:  "")
+
+      aux = readLine()!
+      opcionIngresada = aux
+
+      let cantidad = Int(opcionIngresada)!      
+      if cantidad <= articulos[1].cantidad {
+        cuenta = cantidad * articulos[1].precio
+        print("\n")        
+        print("        USTED COMPRO: \(cantidad) \(articulos[1].nombre)")
+        print("               TOTAL: $ \(cuenta)")
+        print("\n")
+        print("----♥ Gracias por su Compra ♥-----")  
+        print("\n")
+      } else {
+        print("No hay Cantidad suficiente")
+      }
+
+    case "3":
+      print("\n")
+      print("----------------------------------")
+      print("Seleccionaste: \(articulos[2].nombre)")
+      print("       Precio: \(articulos[2].precio)")
+      print("        Stock: \(articulos[2].cantidad)")
+      print("----------------------------------")
+      print("\n")
+      print("Cuanto desea comprar: ", terminator:  "")
+
+      aux = readLine()!
+      opcionIngresada = aux
+
+      let cantidad = Int(opcionIngresada)!      
+      if cantidad <= articulos[2].cantidad {
+        cuenta = cantidad * articulos[2].precio
+        print("\n")        
+        print("        USTED COMPRO: \(cantidad) \(articulos[2].nombre)")
+        print("               TOTAL: $ \(cuenta)")
+        print("\n")
+        print("----♥ Gracias por su Compra ♥-----")  
+        print("\n")
+      } else {
+        print("No hay Cantidad suficiente")
+      }
+
+    case "4":
+      print("\n")
+      print("----------------------------------")
+      print("Seleccionaste: \(articulos[3].nombre)")
+      print("       Precio: \(articulos[3].precio)")
+      print("        Stock: \(articulos[3].cantidad)")
+      print("----------------------------------")
+      print("\n")
+      print("Cuanto desea comprar: ", terminator:  "")
+
+      aux = readLine()!
+      opcionIngresada = aux
+
+      let cantidad = Int(opcionIngresada)!      
+      if cantidad <= articulos[3].cantidad {
+        cuenta = cantidad * articulos[3].precio
+        print("\n")        
+        print("        USTED COMPRO: \(cantidad) \(articulos[3].nombre)")
+        print("               TOTAL: $ \(cuenta)")
+        print("\n")
+        print("----♥ Gracias por su Compra ♥-----")  
+        print("\n")
+      } else {
+        print("No hay Cantidad suficiente")
+      }
+      
+    case "5":
+      print("\n")
+      print("----------------------------------")
+      print("Seleccionaste: \(articulos[4].nombre)")
+      print("       Precio: \(articulos[4].precio)")
+      print("        Stock: \(articulos[4].cantidad)")
+      print("----------------------------------")
+      print("\n")
+      print("Cuanto desea comprar: ", terminator:  "")
+
+      aux = readLine()!
+      opcionIngresada = aux
+
+      let cantidad = Int(opcionIngresada)!      
+      if cantidad <= articulos[4].cantidad {
+        cuenta = cantidad * articulos[4].precio
+        print("\n")        
+        print("        USTED COMPRO: \(cantidad) \(articulos[4].nombre)")
+        print("               TOTAL: $ \(cuenta)")
+        print("\n")
+        print("----♥ Gracias por su Compra ♥-----")  
+        print("\n")
+      } else {
+        print("No hay Cantidad suficiente")
+      }
+      
+    case "6":
+      print("\n")
+      print("----------------------------------")
+      print("Seleccionaste: \(articulos[5].nombre)")
+      print("       Precio: \(articulos[5].precio)")
+      print("        Stock: \(articulos[5].cantidad)")
+      print("----------------------------------")
+      print("\n")
+      print("Cuanto desea comprar: ", terminator:  "")
+
+      aux = readLine()!
+      opcionIngresada = aux
+
+      let cantidad = Int(opcionIngresada)!      
+      if cantidad <= articulos[5].cantidad {
+        cuenta = cantidad * articulos[5].precio
+        print("\n")        
+        print("        USTED COMPRO: \(cantidad) \(articulos[5].nombre)")
+        print("               TOTAL: $ \(cuenta)")
+        print("\n")
+        print("----♥ Gracias por su Compra ♥-----")  
+        print("\n")
+      } else {
+        print("No hay Cantidad suficiente")
+        print("\n")
+      }  
+      
+      default:
+      print("Opcion no valida")
+      print("\n")
+    }
+    
+  } else if opcionIngresada == "2" {
+    print("Gracias por su visita. ¡Vuelva pronto!")
+  }   
+  
+}
