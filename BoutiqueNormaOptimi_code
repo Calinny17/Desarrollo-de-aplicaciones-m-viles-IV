@@ -1,0 +1,82 @@
+struct Articulo {
+  var nombre: String
+  var precio: Int
+  var cantidad: Int
+}
+
+var articulos: [Articulo] = [
+  Articulo(nombre: "Bluza", precio: 250, cantidad: 125),
+  Articulo(nombre: "Falda", precio: 399, cantidad: 150),
+  Articulo(nombre: "Bolza", precio: 350, cantidad: 90),
+  Articulo(nombre: "Camiza", precio: 219, cantidad: 110),
+  Articulo(nombre: "Pantalon", precio: 450, cantidad: 135),
+  Articulo(nombre: "Cartera", precio: 250, cantidad: 100)
+]
+
+var opcionIngresada = ""
+var cuenta = 0
+
+func mostrarArticulos(_ articulos: [Articulo]) {
+  for (index, articulo) in articulos.enumerated() {
+      print("Opción \(index + 1):")
+      print("     Articulo: \(articulo.nombre)")      
+      print("----------------------------------")
+  }
+}
+
+func procesarCompra(indice: Int) {
+  let articulo = articulos[indice]
+    print("\n----------------------------------")
+  print("Seleccionaste: \(articulo.nombre)")
+  print("       Precio: \(articulo.precio)")
+  print("        Stock: \(articulo.cantidad)") 
+    print("----------------------------------\n")
+  print("Cuanto desea comprar: ", terminator: "")
+
+  if let input = readLine(), let cantidad = Int(input) {
+      if cantidad <= articulo.cantidad {
+          cuenta = cantidad * articulo.precio
+          articulos[indice].cantidad -= cantidad
+          print("\nUSTED COMPRÓ: \(cantidad) \(articulo.nombre)")
+          print("       TOTAL: $\(cuenta)")
+          print("\n----♥ Gracias por su Compra ♥----\n")
+      } else {
+          print("No hay cantidad suficiente\n")
+      }
+  } else {
+      print("Entrada inválida.\n")
+  }
+}
+
+repeat {  
+  print("----------------------------------")
+  print("--------♥ ¡¡Bienvenido!! ♥--------")
+  print("---♥♥♥--- Boutique Norma ---♥♥♥---")
+  print("----------------------------------\n")
+  print("Opción 1: Comprar Artículo")
+  print("Opción 2: Salir \n")    
+    print("----------------------------------")
+  print("Ingrese la opción: ", terminator: "")
+
+  opcionIngresada = readLine() ?? ""
+
+  if opcionIngresada == "1" { 
+      print("\n----------------------------------")
+      print("----♥ Artículos Disponibles ♥-----")
+      print("----------------------------------\n")
+      mostrarArticulos(articulos)
+      print("\nIngrese la opción deseada: ", terminator: "")
+
+      if let input = readLine(), let opcionArticulo = Int(input), opcionArticulo >= 1 && opcionArticulo <= articulos.count {
+          procesarCompra(indice: opcionArticulo - 1)
+      } else {
+          print("Opción inválida.\n")
+      }
+
+      print("Presione Enter para continuar...")
+      _ = readLine()
+  }
+
+} while opcionIngresada != "2"
+
+print("Gracias por su visita. ¡Vuelva pronto!")
