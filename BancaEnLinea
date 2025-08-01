@@ -1,0 +1,93 @@
+import Foundation
+
+var saldo: Double = 0.0
+var operacionActiva = true
+var primerRetiro = true
+
+while operacionActiva {
+    print("""
+    \n--- BANCO MEXICANO ---\n    
+    1. Depósito
+    2. Retiro
+    3. Saldo
+    4. Salir\n
+    Selecciona una opción: 
+    """, terminator: "")
+
+    guard let opcion = readLine(), let opcionInt = Int(opcion) else {
+        print("Opción inválida. Intenta de nuevo.")
+        continue
+    }
+
+    switch opcionInt {
+    case 1:
+        realizarDeposito()
+    case 2:
+        realizarRetiro()
+    case 3:
+        print("\n Funcionalidad aún no implementada.")
+    case 4:
+        print("Gracias por usar Banco Mexicano. ¡Hasta pronto!")
+        operacionActiva = false
+    default:
+        print("Opción inválida.")
+    }
+  func realizarDeposito() {
+      var continuar = true
+
+      while continuar {
+          print("\n¿Cuánto deseas depositar: ", terminator:"")
+          if let entrada = readLine(), let cantidad = Double(entrada), cantidad > 0 {
+              saldo += cantidad
+              print("\nDepósito exitoso. Nuevo saldo: $\(saldo)")
+          } else {
+              print("\nCantidad inválida.")
+          }
+
+          print("\nDeseas realizar otro depósito (Sí/No): ", terminator:"")
+          if let respuesta = readLine()?.lowercased(), respuesta != "sí" && respuesta != "si" {
+              continuar = false
+          }
+      }
+
+      preguntarOtraOperacion()
+  }
+  func realizarRetiro() {
+      if primerRetiro && saldo == 0 {
+          print("\nNo cuenta con saldo disponible.")
+          primerRetiro = false
+          preguntarOtraOperacion()
+          return
+      }
+
+      var continuar = true
+
+      while continuar {
+          print("\nCuánto deseas retirar: ", terminator:"")
+          if let entrada = readLine(), let cantidad = Double(entrada), cantidad > 0 {
+              if cantidad <= saldo {
+                  saldo -= cantidad
+                  print("\nRetiro exitoso. Saldo restante: $\(saldo)")
+              } else {
+                  print("\nSaldo insuficiente. Saldo actual: $\(saldo)")
+              }
+          } else {
+              print("Cantidad inválida.")
+          }
+
+          print("\nDeseas realizar otro retiro (Sí/No): ", terminator:"")
+          if let respuesta = readLine()?.lowercased(), respuesta != "sí" && respuesta != "si" {
+              continuar = false
+          }
+      }
+
+      preguntarOtraOperacion()
+  }
+  func preguntarOtraOperacion() {
+      print("\nDeseas realizar otra operación (Sí/No): ", terminator:"")
+      if let respuesta = readLine()?.lowercased(), respuesta != "sí" && respuesta != "si" {
+          operacionActiva = false
+          print("\nGracias por usar Banco Mexicano. ¡Hasta pronto!")
+      }
+  }
+}
